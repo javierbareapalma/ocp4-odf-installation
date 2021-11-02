@@ -1,7 +1,9 @@
 #!/bin/bash
 
+CURRENT_DIR=$(pwd)
+
 echo "Exporting admin TLS credentials..."
-export KUBECONFIG=/home/fperea/Documents/Red_Hat/repositories/ocp-installation/install-dir/auth/kubeconfig
+export KUBECONFIG=$CURRENT_DIR/install-dir/auth/kubeconfig
 
 echo "Creating htpasswd file"
 rm -f ./oauth/htpasswd

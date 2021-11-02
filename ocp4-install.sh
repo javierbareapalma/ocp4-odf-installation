@@ -53,6 +53,7 @@ if [ ! -f ./install-dir/terraform.cluster.tfstate ]; then
     fi
 else
     echo "An OCP cluster exists. Skipping installation..."
+    echo "Remove the install-dir folder and run the script."
 fi
 
 exit
