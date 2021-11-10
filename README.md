@@ -6,13 +6,20 @@ running on the public cloud or your local infrastructure.
 To learn more about installing OpenShift, visit [docs.openshift.com](https://docs.openshift.com)
 and select the version of OpenShift you are using.
 
-## Installing the tools
+## Installing OCP cluster
 
-After extracting this archive, you can move the `openshift-install` binary
-to a location on your PATH such as `/usr/local/bin`, or keep it in a temporary
-directory and reference it via `./openshift-install`.
+To install an OCP cluster (IPI) on AWS, just run:
 
-## License
+1. If you want to install the latest version of OCP:
+```
+./ocp4-install.sh
+```
 
-OpenShift is licensed under the Apache Public License 2.0. The source code for this
-program is [located on github](https://github.com/openshift/installer).
+Then, introduce the data that the installer will ask during the execution.
+
+2. If you want to install a specific version of OCP:
+```
+./ocp4-install.sh 4.6
+```
+
+Then, introduce the data that the installer will ask during the execution.
