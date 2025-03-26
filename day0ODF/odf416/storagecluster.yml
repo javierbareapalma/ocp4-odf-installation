@@ -1,0 +1,61 @@
+---
+apiVersion: ocs.openshift.io/v1
+kind: StorageCluster
+metadata:
+  annotations:
+    uninstall.ocs.openshift.io/cleanup-policy: delete
+    uninstall.ocs.openshift.io/mode: graceful
+    #argocd.argoproj.io/sync-wave: "3"
+    #argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  finalizers:
+  - storagecluster.ocs.openshift.io
+  name: ocs-storagecluster
+  namespace: openshift-storage
+spec:
+  arbiter: {}
+  enableCephTools: true
+  encryption:
+#    keyRotation:
+#      schedule: '@weekly'
+    kms: {}
+  externalStorage: {}
+  managedResources:
+    cephBlockPools: {}
+    cephCluster: {}
+    cephConfig: {}
+    cephDashboard: {}
+    cephFilesystems: {}
+    cephNonResilientPools:
+      count: 1
+    cephObjectStoreUsers: {}
+    cephObjectStores: {}
+    cephRBDMirror:
+      daemonCount: 1
+    cephToolbox: {}
+  mirroring: {}
+  network:
+    connections:
+      encryption: {}
+    multiClusterService: {}
+  nodeTopologies: {}
+  resourceProfile: balanced
+  storageDeviceSets:
+  - config: {}
+    count: 1
+    dataPVCTemplate:
+      metadata: {}
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 2Ti
+        storageClassName: gp3-csi
+        volumeMode: Block
+      status: {}
+    name: ocs-deviceset-gp3-csi
+    placement: {}
+    portable: true
+    preparePlacement: {}
+    replica: 3
+    resources: {}

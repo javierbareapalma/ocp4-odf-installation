@@ -23,3 +23,15 @@ Then, introduce the data that the installer will ask during the execution.
 ```
 
 Then, introduce the data that the installer will ask during the execution.
+
+## Installing ODF
+
+After OCP gets installed, label the worker nodes as follows:
+
+```
+oc label node <NodeName> cluster.ocs.openshift.io/openshift-storage=''
+```
+
+You will need to add the ODF label to each OCP node that has storage devices used to create the ODF storage cluster. The ODF operator looks for this label to know which nodes can be scheduling targets for ODF components. You must have a minimum of three labeled nodes with the same number of devices or disks with similar performance capability. 
+
+Now, install ODF as a whole..
