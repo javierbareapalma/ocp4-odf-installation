@@ -1,7 +1,7 @@
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: s3-rgw
+  name: s3-rgw-https
   namespace: openshift-storage
   labels:
     app: rook-ceph-rgw
@@ -16,8 +16,8 @@ spec:
     name: rook-ceph-rgw-ocs-storagecluster-cephobjectstore
     weight: 100
   port:
-    targetPort: http
+    targetPort: https
   tls:
-    termination: edge
-    insecureEdgeTerminationPolicy: Allow
+    termination: passthrough
+    insecureEdgeTerminationPolicy: Redirect
   wildcardPolicy: None
