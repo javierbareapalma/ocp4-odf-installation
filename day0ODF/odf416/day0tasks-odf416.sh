@@ -1,3 +1,6 @@
+
+cd ./day0ODF
+
 oc apply -f ./odf416/namespace.yml
 echo "if u have 1 seconds to spare.."
 sleep 1
