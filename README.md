@@ -35,3 +35,22 @@ oc label node <NodeName> cluster.ocs.openshift.io/openshift-storage=''
 You will need to add the ODF label to each OCP node that has storage devices used to create the ODF storage cluster. The ODF operator looks for this label to know which nodes can be scheduling targets for ODF components. You must have a minimum of three labeled nodes with the same number of devices or disks with similar performance capability. 
 
 Now, install ODF as a whole..
+
+```
+# ./day0ODF/preday0tasks.sh
+```
+
+Continue with the right spec.yaml files on behalf of ODF releases
+
+After, if Ceph Objects-provisioning is needed, continue with 
+
+```
+# oc apply -f day1late-RGWstuff/
+```
+
+Continue with day2 tasks
+
+```
+# ./day2ODF/day2tasks.sh
+```
+
