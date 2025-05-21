@@ -40,7 +40,23 @@ Now, install ODF as a whole..
 # ./day0ODF/preday0tasks.sh
 ```
 
-Continue with the right spec.yaml files on behalf of ODF releases
+Continue with the right spec.yaml files on behalf of ODF releases.
+
+Like ODF4.16
+
+```
+# oc apply -k ./day0ODF/odf416/
+```
+
+When finished the Operator installation, go and execute
+
+```
+# oc apply -f ./day0ODF/odf416/storagesystem.yaml
+# oc apply -f ./day0ODF/odf416/storagecluster.yaml
+
+```
+and wait until CR storagecluster is completely done created.
+
 
 After, if Ceph Objects-provisioning is needed, continue with 
 

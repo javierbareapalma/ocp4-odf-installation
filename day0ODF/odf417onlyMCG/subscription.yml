@@ -8,9 +8,8 @@ metadata:
   namespace: openshift-storage
 spec:
   channel: stable-4.17
-  installPlanApproval: Automatic
+  installPlanApproval: Manual
   name: odf-operator
   source: redhat-operators
   sourceNamespace: openshift-marketplace
   #startingCSV: odf-operator.v4.17.4-rhodf
-  #startingCSV: odf-client-operator.v4.17.4-rhodf
