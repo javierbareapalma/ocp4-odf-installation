@@ -19,7 +19,7 @@ Then, introduce the data that the installer will ask during the execution.
 
 2. If you want to install a specific version of OCP:
 ```
-./ocp4-install.sh 4.6
+./ocp4-install.sh 4.16
 ```
 
 Then, introduce the data that the installer will ask during the execution.
@@ -51,7 +51,6 @@ Like ODF4.16
 When finished the Operator installation, go and execute
 
 ```
-# oc apply -f ./day0ODF/odf416/storagesystem.yaml
 # oc apply -f ./day0ODF/odf416/storagecluster.yaml
 
 ```
