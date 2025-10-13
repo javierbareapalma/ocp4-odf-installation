@@ -1,0 +1,8 @@
+---
+resources:
+- ../../base
+  #- storagesystem.yml
+  #- storagecluster.yml
+#patches:
+patchesStrategicMerge:
+  - subscription.yml
