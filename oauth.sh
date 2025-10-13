@@ -7,6 +7,7 @@ export KUBECONFIG=$CURRENT_DIR/install-dir/auth/kubeconfig
 
 echo "Creating htpasswd file"
 rm -f ./oauth/htpasswd
+mkdir oauth
 htpasswd -c -b -B ./oauth/htpasswd admin redhat
 htpasswd -b -B ./oauth/htpasswd andrew r3dh4t1!
 htpasswd -b -B ./oauth/htpasswd karla r3dh4t1!
@@ -14,7 +15,7 @@ htpasswd -b -B ./oauth/htpasswd marina r3dh4t1!
 
 
 echo "Creating HTPasswd Secret"
-oc create secret generic htpass-secret --from-file=htpasswd=./oauth/htpasswd -n openshift-config --dry-run -o yaml | oc apply -f -
+oc create secret generic htpass-secret --from-file=htpasswd=./oauth/htpasswd -n openshift-config --dry-run=client -o yaml | oc apply -f -
 
 echo "Configuring HTPassw identity provider"
 cat > ./oauth/cluster-oauth.yaml << EOF_IP
