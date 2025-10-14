@@ -24,7 +24,7 @@ Then, introduce the data that the installer will ask during the execution.
 
 Then, introduce the data that the installer will ask during the execution.
 
-## Installing ODF
+## Installing ODF, classical CLI way
 
 After OCP gets installed, label the worker nodes as follows:
 
@@ -69,3 +69,63 @@ Continue with day2 tasks
 # ./day2ODF/day2tasks.sh
 ```
 
+
+
+## Installing ODF, kustomize CLI way
+
+Initially, to label the future ODF worker nodes,
+
+```
+$ ./day0ODF/preday0tasks.sh
+```
+
+Continue with the right spec.yaml files on behalf of ODF releases.
+
+Go to ODF_kustomize directory.
+
+Apply what ODF release you are needing, e.g. 4.16 in this case:
+
+```
+ODF_kustomize$ oc apply -k overlays/odf416
+```
+
+Likewise, in order to get ODF console
+
+```
+$ oc patch console.operator cluster -n openshift-storage --type json -p '[{"op": "add", "path": "/spec/plugins", "value": ["odf-console"]}]'
+```
+
+Likewise, in order to get ODF toolbox in ODFv4.15 and above,
+
+```
+$ oc patch storageclusters.ocs.openshift.io ocs-storagecluster -n openshift-storage --type json --patch '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'
+```
+
+
+
+## Installing ODF, argocd-gitops way
+
+I am using same ODF kustomize structure for this purpose.
+
+Before getting into, install 'Red Hat OpenShift GitOps' from OperatorHub.
+
+Initially, and in order to deploy first *argocd* Application, locate the manifest.yaml file, and create/apply it
+
+```
+$ oc apply -f app-ocp-odf.yaml
+```
+
+<img src="" alt="argocd_Screenshot_ocp-odf.png">
+
+From time to time, and to check whether kustomize files are correct, check with this:
+
+```
+oc apply -k ODF_kustomize/overlays/odf416 --dry-run=client
+```
+
+And, it is quite likely a problem-issue will come across with permissions-credentials not enough to create CR 'ocs-storagecluster'.
+If so,
+
+```
+$ oc adm policy add-cluster-role-to-user admin  system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller
+```
