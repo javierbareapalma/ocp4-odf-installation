@@ -115,7 +115,7 @@ Initially, and in order to deploy first *argocd* Application, locate the manifes
 $ oc apply -f app-ocp-odf.yaml
 ```
 
-<img src="" alt="argocd_Screenshot_ocp-odf.png">
+<img src="argocd_Screenshot_ocp-odf.png" alt="">
 
 From time to time, and to check whether kustomize files are correct, check with this:
 
