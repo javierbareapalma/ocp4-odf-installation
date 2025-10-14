@@ -1,6 +1,6 @@
 resources:
 - ../../base
-patchesStrategicMerge:
+patches:
 - subscription.yml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
