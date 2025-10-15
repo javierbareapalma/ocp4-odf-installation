@@ -112,7 +112,7 @@ Before getting into, install 'Red Hat OpenShift GitOps' from OperatorHub.
 Initially, and in order to deploy first *argocd* Application, locate the manifest.yaml file, and create/apply it
 
 ```
-$ oc apply -f app-ocp-odf.yaml
+$ oc apply -f application-ocp-odf.yaml
 ```
 
 <img src="argocd_Screenshot_ocp-odf.png" alt="">
