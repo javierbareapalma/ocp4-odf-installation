@@ -108,6 +108,14 @@ $ oc patch storageclusters.ocs.openshift.io ocs-storagecluster -n openshift-stor
 I am using same ODF kustomize structure for this purpose.
 
 Before getting into, install 'Red Hat OpenShift GitOps' from OperatorHub.
+That deployment creates two projects:
+  -openshift-gitops-operator
+  -openshift-gitops
+
+together with two objects: 
+  -one CR kind:argocd , called 'openshift-gitops'
+  -one CR kind:appProject , called 'default'
+
 
 Initially, and in order to deploy first *argocd* Application, locate the manifest.yaml file, and create/apply it
 
