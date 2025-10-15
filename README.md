@@ -103,7 +103,7 @@ $ oc patch storageclusters.ocs.openshift.io ocs-storagecluster -n openshift-stor
 
 
 
-## Installing ODF, argocd-gitops way
+## Installing ODF, gitops-argocd way
 
 I am using same ODF kustomize structure for this purpose.
 
