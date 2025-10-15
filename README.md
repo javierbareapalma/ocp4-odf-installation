@@ -116,11 +116,16 @@ together with two objects:
   -one CR kind:argocd , called 'openshift-gitops'
   -one CR kind:appProject , called 'default'
 
-
-Initially, and in order to deploy first *argocd* Application, locate the manifest.yaml file, and create/apply it
+In order to avoid, not enough permissions to create upcoming CRs, give 'admin' cluster-role creds to user-serviceaccount 'openshift-gitops-argocd-application-controller'
 
 ```
-$ oc apply -f application-ocp-odf.yaml
+$ oc adm policy add-cluster-role-to-user admin  system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller
+```
+
+Initially, and in order to deploy first *argocd* Application, locate the right manifest.yaml file, and create/apply it
+
+```
+$ oc apply -f application-ocp-odf416.yaml
 ```
 
 <img src="argocd_Screenshot_ocp-odf.png" alt="">
@@ -129,11 +134,4 @@ From time to time, and to check whether kustomize files are correct, check with 
 
 ```
 oc apply -k ODF_kustomize/overlays/odf416 --dry-run=client
-```
-
-And, it is quite likely a problem-issue will come across with permissions-credentials not enough to create CR 'ocs-storagecluster'.
-If so,
-
-```
-$ oc adm policy add-cluster-role-to-user admin  system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller
 ```
