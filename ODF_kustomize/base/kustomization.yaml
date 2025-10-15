@@ -10,3 +10,4 @@ resources:
   - storagecluster.yml
   #- storagesystem.yml
   
+  - job-enable-console-plugin
