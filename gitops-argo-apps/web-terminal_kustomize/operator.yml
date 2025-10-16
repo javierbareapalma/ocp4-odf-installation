@@ -3,4 +3,6 @@ apiVersion: operators.coreos.com/v1
 kind: Operator
 metadata:
   name: web-terminal.openshift-operators  
-spec: {}
+spec:
+  targetNamespaces: []
+
