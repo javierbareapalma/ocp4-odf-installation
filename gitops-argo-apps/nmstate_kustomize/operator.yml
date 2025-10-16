@@ -1,0 +1,7 @@
+---
+apiVersion: operators.coreos.com/v1
+kind: Operator
+metadata:
+  name: name: kubernetes-nmstate-operator.openshift-nmstate
+  namespace: openshift-nmstate
+spec: {}

@@ -11,7 +11,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: gitops-argocd-apps/ODF_kustomize/overlays/odf416
+    path: gitops-argocd-apps/odf_kustomize/overlays/odf416
     repoURL: https://github.com/javierbareapalma/ocp4-odf-installation.git
     targetRevision: main
   syncPolicy:

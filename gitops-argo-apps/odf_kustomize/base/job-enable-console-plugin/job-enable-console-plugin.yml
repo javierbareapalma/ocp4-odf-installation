@@ -1,0 +1,32 @@
+---
+# create one installplan-approver job per manual operator
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: enable-console-plugin
+  namespace: openshift-storage
+spec:
+  completions: 1
+  parallelism: 1
+  backoffLimit: 10
+  activeDeadlineSeconds: 240
+  template:
+    spec:
+      containers:
+      - name: purpose-job-container-job-enable-console-plugin
+        image: bitnami/kubectl:latest   # lightweight kubectl image
+        imagePullPolicy: Always
+        command:
+          - /bin/sh
+          - -c
+          - |
+            if ! kubectl get console.operator.openshift.io cluster -o yaml  | grep "odf-console";
+            then
+              kubectl patch console.operator.openshift.io cluster --type=json \
+              --patch '[{"op":"add","path":"/spec/plugins/-","value":"odf-console"}]'
+            fi
+      dnsPolicy: ClusterFirst
+      restartPolicy: Never
+      serviceAccountName: job-enable-console-plugin
+      terminationGracePeriodSeconds: 30
+      

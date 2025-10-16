@@ -81,12 +81,12 @@ $ ./day0ODF/preday0tasks.sh
 
 Continue with the right spec.yaml files on behalf of ODF releases.
 
-Go to ODF_kustomize directory.
+Go to odf_kustomize directory.
 
 Apply what ODF release you are needing, e.g. 4.16 in this case:
 
 ```
-ODF_kustomize$ oc apply -k overlays/odf416
+odf_kustomize$ oc apply -k overlays/odf416
 ```
 
 Likewise, in order to get ODF console
@@ -133,5 +133,5 @@ $ oc apply -f application-ocp-odf416.yaml
 From time to time, and to check whether kustomize files are correct, check with this:
 
 ```
-oc apply -k ODF_kustomize/overlays/odf416 --dry-run=client
+oc apply -k odf_kustomize/overlays/odf416 --dry-run=client
 ```
