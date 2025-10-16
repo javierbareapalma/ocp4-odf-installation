@@ -37,7 +37,7 @@ You will need to add the ODF label to each OCP node that has storage devices use
 Now, install ODF as a whole..
 
 ```
-# ./day0ODF/preday0tasks.sh
+ ./day0ODF/preday0tasks.sh
 ```
 
 Continue with the right spec.yaml files on behalf of ODF releases.
@@ -45,13 +45,13 @@ Continue with the right spec.yaml files on behalf of ODF releases.
 Like ODF4.16
 
 ```
-# oc apply -k ./day0ODF/odf416/
+oc apply -k ./day0ODF/odf416/
 ```
 
 When finished the Operator installation, go and execute
 
 ```
-# oc apply -f ./day0ODF/odf416/storagecluster.yaml
+oc apply -f ./day0ODF/odf416/storagecluster.yaml
 
 ```
 and wait until CR storagecluster is completely done created.
@@ -60,13 +60,13 @@ and wait until CR storagecluster is completely done created.
 After, if Ceph Objects-provisioning is needed, continue with 
 
 ```
-# oc apply -f day1late-RGWstuff/
+oc apply -f day1late-RGWstuff/
 ```
 
 Continue with day2 tasks
 
 ```
-# ./day2ODF/day2tasks.sh
+ ./day2ODF/day2tasks.sh
 ```
 
 
@@ -76,7 +76,7 @@ Continue with day2 tasks
 Initially, to label the future ODF worker nodes,
 
 ```
-$ ./day0ODF/preday0tasks.sh
+ ./day0ODF/preday0tasks.sh
 ```
 
 Continue with the right spec.yaml files on behalf of ODF releases.
@@ -92,13 +92,13 @@ odf_kustomize$ oc apply -k overlays/odf416
 Likewise, in order to get ODF console
 
 ```
-$ oc patch console.operator cluster -n openshift-storage --type json -p '[{"op": "add", "path": "/spec/plugins", "value": ["odf-console"]}]'
+oc patch console.operator cluster -n openshift-storage --type json -p '[{"op": "add", "path": "/spec/plugins", "value": ["odf-console"]}]'
 ```
 
 Likewise, in order to get ODF toolbox in ODFv4.15 and above,
 
 ```
-$ oc patch storageclusters.ocs.openshift.io ocs-storagecluster -n openshift-storage --type json --patch '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'
+oc patch storageclusters.ocs.openshift.io ocs-storagecluster -n openshift-storage --type json --patch '[{ "op": "replace", "path": "/spec/enableCephTools", "value": true }]'
 ```
 
 
@@ -119,13 +119,13 @@ together with two objects:
 In order to avoid, not enough permissions to create upcoming CRs, give 'admin' cluster-role creds to user-serviceaccount 'openshift-gitops-argocd-application-controller'
 
 ```
-$ oc adm policy add-cluster-role-to-user admin  system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller
+oc adm policy add-cluster-role-to-user admin  system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller
 ```
 
 Initially, and in order to deploy first *argocd* Application, locate the right manifest.yaml file, and create/apply it
 
 ```
-$ oc apply -f application-ocp-odf416.yaml
+oc apply -f application-ocp-odf416.yaml
 ```
 
 <img src="argocd_Screenshot_ocp-odf.png" alt="">
