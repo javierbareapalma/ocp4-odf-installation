@@ -7,6 +7,11 @@ if [ "$#" -ne 1 ]; then
   exit 1
 fi
 
+# Label the nodes for ODF storage purpose
+echo "Labeling nodes to be used for ODF storage purpose.."
+nodosodfworkers=$(oc get node -l node-role.kubernetes.io/worker | grep worker | awk '{print $1}')
+for i in $nodosodfworkers; do oc label node $i  cluster.ocs.openshift.io/openshift-storage=''; echo $i; done
+
 # Check the argument value
 case "$1" in
   4.16)

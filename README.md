@@ -116,7 +116,7 @@ together with two objects:
   -one CR kind:argocd , called 'openshift-gitops'
   -one CR kind:appProject , called 'default'
 
-In order to avoid, not enough permissions to create upcoming CRs, give 'admin' cluster-role creds to user-serviceaccount 'openshift-gitops-argocd-application-controller'
+In order to avoid, not enough permissions to create upcoming CRs, give 'admin' cluster-role creds to user-serviceaccount 'openshift-gitops-argocd-application-controller' like this below:
 
 ```
 oc adm policy add-cluster-role-to-user admin  system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller
