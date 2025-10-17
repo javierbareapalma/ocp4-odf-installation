@@ -1,0 +1,30 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: labeling-odf-nodes
+  namespace: openshift-storage  ##?
+spec:
+  completions: 1
+  parallelism: 1
+  backoffLimit: 10
+  activeDeadlineSeconds: 240
+  template:
+    spec:
+      containers:
+      - name: purpose-job-labeling-odf-nodes
+        image: bitnami/kubectl:latest   # lightweight kubectl image
+        imagePullPolicy: Always
+        command:
+          - /bin/sh
+          - -c
+          - |
+            # Label the nodes for ODF storage purpose
+            echo "Labeling nodes to be used for ODF storage purpose.."
+            nodosodfworkers=$(kubectl get node -l node-role.kubernetes.io/worker | grep worker | awk '{print $1}')
+            for i in $nodosodfworkers; do kubectl label node $i  cluster.ocs.openshift.io/openshift-storage=''; echo $i; done
+      dnsPolicy: ClusterFirst
+      restartPolicy: Never
+      serviceAccountName: job-labeling-odf-nodes
+      terminationGracePeriodSeconds: 30
+      
