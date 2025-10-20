@@ -5,7 +5,7 @@ metadata:
   name: labeling-odf-nodes
   namespace: openshift-storage  ##?
 spec:
-  completions: 1
+  completions: 8
   parallelism: 1
   backoffLimit: 10
   activeDeadlineSeconds: 240
