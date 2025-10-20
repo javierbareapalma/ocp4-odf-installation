@@ -5,7 +5,7 @@ metadata:
   name: labeling-odf-nodes
 rules:
 - apiGroups:
-  - config.openshift.io
+  - v1
   #- config.openshift.io/v1
   #- storage.k8s.io
   resources:
