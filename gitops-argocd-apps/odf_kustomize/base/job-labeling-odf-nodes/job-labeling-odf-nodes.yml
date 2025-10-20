@@ -24,6 +24,7 @@ spec:
             echo "Labeling nodes to be used for ODF storage purpose.."
             nodosodfworkers=$(kubectl get node -l node-role.kubernetes.io/worker | grep worker | awk '{print $1}')
             for i in $nodosodfworkers; do kubectl label node $i  cluster.ocs.openshift.io/openshift-storage=''; echo $i; done
+            watch -n 10 ls
       dnsPolicy: ClusterFirst
       restartPolicy: Never
       serviceAccountName: job-labeling-odf-nodes
