@@ -1,0 +1,180 @@
+---
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: bond-storage
+spec:
+  nodeSelector:
+    node-role.kubernetes.io/worker: ""
+    kubernetes.io/hostname: server8
+  desiredState:
+    interfaces:
+    - name: ens2
+      description: LACP member of bond-storage
+      type: ethernet
+      mtu: 9000
+      state: up
+      lldp:
+        enabled: true
+    - name: ens3
+      description: LACP member of bond-storage
+      type: ethernet
+      mtu: 9000
+      state: up
+      lldp:
+        enabled: true
+    - name: ens4
+      description: LACP member of bond-storage
+      type: ethernet
+      mtu: 9000
+      state: up
+      lldp:
+        enabled: true
+    - name: ens5
+      description: LACP member of bond-storage
+      type: ethernet
+      mtu: 9000
+      state: up
+      lldp:
+        enabled: true
+
+    - name: bond-storage
+      type: bond
+      mtu: 9000
+      state: up
+      link-aggregation:
+        mode: 802.3ad
+        options:
+          miimon: "150"
+        port:
+          - ens2
+          - ens3
+          - ens4
+          - ens5
+      ipv4:
+        address:
+          - ip: 172.16.43.8
+            prefix-length: 24
+        enabled: true
+      ipv6:
+        enabled: false
+---
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: bond-storage
+spec:
+  nodeSelector:
+    node-role.kubernetes.io/worker: ""
+    kubernetes.io/hostname: server9
+  desiredState:
+    interfaces:
+    - name: ens2
+      description: LACP member of bond-storage
+      type: ethernet
+      mtu: 9000
+      state: up
+      lldp:
+        enabled: true
+    - name: ens3
+      description: LACP member of bond-storage
+      type: ethernet
+      mtu: 9000
+      state: up
+      lldp:
+        enabled: true
+    - name: ens4
+      description: LACP member of bond-storage
+      type: ethernet
+      mtu: 9000
+      state: up
+      lldp:
+        enabled: true
+    - name: ens5
+      description: LACP member of bond-storage
+      type: ethernet
+      mtu: 9000
+      state: up
+      lldp:
+        enabled: true
+
+    - name: bond-storage
+      type: bond
+      mtu: 9000
+      state: up
+      link-aggregation:
+        mode: 802.3ad
+        options:
+          miimon: "150"
+        port:
+          - ens2
+          - ens3
+          - ens4
+          - ens5
+      ipv4:
+        address:
+          - ip: 172.16.43.9
+            prefix-length: 24
+        enabled: true
+      ipv6:
+        enabled: false
+---
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: bond-storage
+spec:
+  nodeSelector:
+    node-role.kubernetes.io/worker: ""
+    kubernetes.io/hostname: server10
+  desiredState:
+    interfaces:
+    - name: ens2
+      description: LACP member of bond-storage
+      type: ethernet
+      mtu: 9000
+      state: up
+      lldp:
+        enabled: true
+    - name: ens3
+      description: LACP member of bond-storage
+      type: ethernet
+      mtu: 9000
+      state: up
+      lldp:
+        enabled: true
+    - name: ens4
+      description: LACP member of bond-storage
+      type: ethernet
+      mtu: 9000
+      state: up
+      lldp:
+        enabled: true
+    - name: ens5
+      description: LACP member of bond-storage
+      type: ethernet
+      mtu: 9000
+      state: up
+      lldp:
+        enabled: true
+
+    - name: bond-storage
+      type: bond
+      mtu: 9000
+      state: up
+      link-aggregation:
+        mode: 802.3ad
+        options:
+          miimon: "150"
+        port:
+          - ens2
+          - ens3
+          - ens4
+          - ens5
+      ipv4:
+        address:
+          - ip: 172.16.43.10
+            prefix-length: 24
+        enabled: true
+      ipv6:
+        enabled: false        
