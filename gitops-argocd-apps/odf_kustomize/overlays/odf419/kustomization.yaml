@@ -1,0 +1,6 @@
+---
+resources:
+- ../../base
+#patches:
+patchesStrategicMerge:
+  - subscription.yml
