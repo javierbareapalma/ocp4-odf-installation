@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# A simple script that accepts one argument: 4.16, 4.17, or 4.18.
+# A simple script that accepts one argument: 4.16, 4.17, 4.18 or 4.19.
 
 # Check that exactly one argument was provided
 if [ "$#" -ne 1 ]; then
-  echo "Usage: $0 {4.16|4.17|4.18}"
+  echo "Usage: $0 {4.16|4.17|4.18|4.19}"
   exit 1
 fi
 
@@ -26,9 +26,13 @@ case "$1" in
     echo "You chose option 4.18."
     oc apply -f application-ocp-odf418.yaml
     ;;
+  4.19)
+    echo "You chose option 4.19."
+    oc apply -f application-ocp-odf419.yaml
+    ;;
   *)
     echo "Invalid option: $1"
-    echo "Usage: $0 {4.16|4.17|4.18}"
+    echo "Usage: $0 {4.16|4.17|4.18|4.19}"
     exit 1
     ;;
 esac
